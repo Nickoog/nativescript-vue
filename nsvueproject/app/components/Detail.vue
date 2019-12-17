@@ -1,8 +1,10 @@
 <template>
-  <GridLayout columns="200, *">
-    <Label col="0" :text="statusText"></Label>
-    <Label col="1" :text="groceryItem.name"></Label>
-  </GridLayout>
+  <Page>
+    <StackLayout>
+      <Label :text="groceryItem.name"></Label>
+      <Button :text="statusText" @tap="toggle"></Button>
+    </StackLayout>
+  </Page>
 </template>
 
 <script>
@@ -18,7 +20,7 @@ export default {
   },
   methods: {
     toggle() {
-      this.$emit('toggleDone', this.groceryItem)
+      this.groceryItem.done = !this.groceryItem.done
     }
   }
 }

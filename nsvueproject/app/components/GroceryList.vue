@@ -1,5 +1,5 @@
 <template>
-  <ListView for="item in items">
+  <ListView for="item in items" @itemTap="onItemTap">
     <v-template>
       <GroceryItem :groceryItem="item" @toggleDone="onToggleDone"></GroceryItem>
     </v-template>
@@ -8,11 +8,19 @@
 
 <script>
 import GroceryItem from './GroceryItem'
+import Detail from './Detail'
 
 export default {
-  components: { GroceryItem },
+  components: { GroceryItem, Detail },
   props: ['items'],
   methods: {
+    onItemTap(args) {
+      this.$navigateTo(Detail, {
+        props: {
+          groceryItem: args.item
+        }
+      })
+    },
     onToggleDone(groceryItem) {
       const newItem = Object.assign(groceryItem, { done: !groceryItem.done })
 
