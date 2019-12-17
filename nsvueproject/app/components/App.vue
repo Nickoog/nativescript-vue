@@ -1,21 +1,17 @@
 <template>
   <Page>
     <StackLayout>
-      <ListView for="item in items">
-        <v-template>
-          <GroceryItem :groceryItem="item"></GroceryItem>
-        </v-template>
-      </ListView>
+      <GroceryList :items="items"/>
     </StackLayout>
   </Page>
 </template>
 
 <script >
 import groceryData from '../grocery-data.json'
-import GroceryItem from './GroceryItem'
+import GroceryList from './GroceryList'
 
 export default {
-  components: { GroceryItem },
+  components: { GroceryList },
   data() {
     return {
       items: groceryData.groceryItems

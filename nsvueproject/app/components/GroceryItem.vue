@@ -9,20 +9,17 @@
 export default {
   props: ['groceryItem'],
   data() {
-    return {
-      status: 0
-    }
+    return {}
   },
   computed: {
     statusText() {
-      return this.status === 0 ? 'Not done' : 'Done'
+      return this.groceryItem.done ? 'Done' : 'Not Done'
     }
   },
   methods: {
     toggle() {
-      this.status = this.status === 0 ? 1 : 0
+      this.$emit('toggleDone', this.groceryItem)
     }
   }
 }
 </script>
-
