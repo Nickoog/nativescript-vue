@@ -1,6 +1,7 @@
 <template>
   <Page>
     <StackLayout>
+      <Button text="Go back" @tap="onBackTap"></Button>
       <Label :text="groceryItem.name"></Label>
       <Button :text="statusText" @tap="toggle"></Button>
     </StackLayout>
@@ -19,6 +20,9 @@ export default {
     }
   },
   methods: {
+    onBackTap() {
+      this.$navigateBack()
+    },
     toggle() {
       this.groceryItem.done = !this.groceryItem.done
     }
