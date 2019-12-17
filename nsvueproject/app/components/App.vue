@@ -1,20 +1,34 @@
 <template>
   <Page>
+    <ActionBar title="Groceries">
+      <ActionItem text="Add" @tap="onAddTap"></ActionItem>
+    </ActionBar>
     <StackLayout>
-      <GroceryList :items="items"/>
+      <GroceryList :items="items" />
     </StackLayout>
   </Page>
 </template>
 
-<script >
+<script>
 import groceryData from '../grocery-data.json'
 import GroceryList from './GroceryList'
+import AddItem from './AddItem'
 
 export default {
-  components: { GroceryList },
+  components: { GroceryList, AddItem },
   data() {
     return {
       items: groceryData.groceryItems
+    }
+  },
+  methods: {
+    onAddTap() {
+      const newId = new Date().getTime()
+      this.$showModal(AddItem, { props: { id: newId } }).then(newItem => {
+        if (newItem) {
+          this.items.push(newItem)
+        }
+      })
     }
   }
 }

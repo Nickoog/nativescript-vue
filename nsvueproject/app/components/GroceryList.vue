@@ -1,7 +1,7 @@
 <template>
   <ListView for="item in items" @itemTap="onItemTap">
     <v-template>
-      <GroceryItem :groceryItem="item" @toggleDone="onToggleDone"></GroceryItem>
+      <GroceryItem :groceryItem="item"></GroceryItem>
     </v-template>
   </ListView>
 </template>
@@ -20,13 +20,6 @@ export default {
           groceryItem: args.item
         }
       })
-    },
-    onToggleDone(groceryItem) {
-      const newItem = Object.assign(groceryItem, { done: !groceryItem.done })
-
-      const idx = this.items.findIndex(i => i.id === groceryItem.id)
-
-      this.items = Object.assign([], this.items, { idx: newItem })
     }
   }
 }
