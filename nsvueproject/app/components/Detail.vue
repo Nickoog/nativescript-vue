@@ -1,5 +1,5 @@
 <template>
-  <Page>
+  <Page android:class="plat-android" ios:class="plat-ios">
     <StackLayout>
       <Button text="Go back" @tap="onBackTap"></Button>
       <Label :text="groceryItem.name"></Label>
@@ -29,3 +29,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.plat-android {
+  color: green;
+}
+.plat-ios {
+  color: purple;
+}
+</style>
